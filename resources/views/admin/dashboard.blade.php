@@ -1,4 +1,4 @@
-@extends('layouts\admin')
+@extends('layouts/admin')
 
 @section('title', 'Dashboard')
 
@@ -163,39 +163,39 @@
 @endsection
 
 @push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#surveyResponsesTable').DataTable({
-            "processing": true,
-            "serverSide": false, // Since we are getting all data at once for dashboard, keeping it simple
-            "ajax": "{{ route('admin.dashboard.survey-data') }}",
-            "columns": [
-                { "data": "title" },
-                { 
-                    "data": "responses_count",
-                    "render": function(data) {
-                        return '<span class="badge text-dark">' + data + '</span>';
-                    }
-                },
-                { "data": "total_reward_coins" },
-                { 
-                    "data": "is_active",
-                    "render": function(data) {
-                        if(data) {
-                            return '<span class="badge bg-success">Active</span>';
-                        } else {
-                            return '<span class="badge bg-danger">Inactive</span>';
+    <script>
+        $(document).ready(function () {
+            $('#surveyResponsesTable').DataTable({
+                "processing": true,
+                "serverSide": false, // Since we are getting all data at once for dashboard, keeping it simple
+                "ajax": "{{ route('admin.dashboard.survey-data') }}",
+                "columns": [
+                    { "data": "title" },
+                    {
+                        "data": "responses_count",
+                        "render": function (data) {
+                            return '<span class="badge text-dark">' + data + '</span>';
+                        }
+                    },
+                    { "data": "total_reward_coins" },
+                    {
+                        "data": "is_active",
+                        "render": function (data) {
+                            if (data) {
+                                return '<span class="badge bg-success">Active</span>';
+                            } else {
+                                return '<span class="badge bg-danger">Inactive</span>';
+                            }
                         }
                     }
+                ],
+                "order": [[1, "desc"]],
+                "pageLength": 5,
+                "language": {
+                    "search": "Filter surveys:",
+                    "emptyTable": "No survey responses found"
                 }
-            ],
-            "order": [[ 1, "desc" ]],
-            "pageLength": 5,
-            "language": {
-                "search": "Filter surveys:",
-                "emptyTable": "No survey responses found"
-            }
+            });
         });
-    });
-</script>
+    </script>
 @endpush
