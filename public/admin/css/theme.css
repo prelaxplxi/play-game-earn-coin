@@ -1,0 +1,313 @@
+/* ============================================
+   Admin Panel - Light/Dark Theme System
+   Uses CSS custom properties + Bootstrap 5's
+   data-bs-theme attribute for seamless theming.
+   ============================================ */
+
+/* ---------- Transitions ---------- */
+body,
+.sidebar,
+.content,
+.card,
+.table,
+.form-control,
+.form-select,
+.modal-content,
+.dropdown-menu {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ==============================================
+   LIGHT MODE (default)
+   ============================================== */
+:root,
+[data-bs-theme="light"] {
+    --admin-body-bg: #f8f9fa;
+    --admin-content-bg: #f8f9fa;
+    --admin-sidebar-bg: #343a40;
+    --admin-sidebar-text: #adb5bd;
+    --admin-sidebar-hover: #495057;
+    --admin-sidebar-title: #ffffff;
+    --admin-card-bg: #ffffff;
+    --admin-card-border: #dee2e6;
+    --admin-text-primary: #212529;
+    --admin-text-secondary: #6c757d;
+    --admin-table-bg: #ffffff;
+    --admin-table-stripe: #f8f9fa;
+    --admin-table-border: #dee2e6;
+    --admin-table-hover: #e9ecef;
+    --admin-input-bg: #ffffff;
+    --admin-input-border: #ced4da;
+    --admin-input-text: #212529;
+    --admin-heading-color: #212529;
+    --admin-hr-color: rgba(255, 255, 255, 0.25);
+    --admin-shadow: rgba(0, 0, 0, 0.075);
+}
+
+/* ==============================================
+   DARK MODE
+   ============================================== */
+[data-bs-theme="dark"] {
+    --admin-body-bg: #1a1d21;
+    --admin-content-bg: #1a1d21;
+    --admin-sidebar-bg: #111418;
+    --admin-sidebar-text: #8b929a;
+    --admin-sidebar-hover: #2b3035;
+    --admin-sidebar-title: #e9ecef;
+    --admin-card-bg: #212529;
+    --admin-card-border: #373b3e;
+    --admin-text-primary: #dee2e6;
+    --admin-text-secondary: #9ca3ab;
+    --admin-table-bg: #212529;
+    --admin-table-stripe: #2c3034;
+    --admin-table-border: #373b3e;
+    --admin-table-hover: #323539;
+    --admin-input-bg: #2b3035;
+    --admin-input-border: #495057;
+    --admin-input-text: #dee2e6;
+    --admin-heading-color: #e9ecef;
+    --admin-hr-color: rgba(255, 255, 255, 0.15);
+    --admin-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Base Elements ---------- */
+body {
+    background-color: var(--admin-body-bg) !important;
+    color: var(--admin-text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--admin-heading-color);
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    background: var(--admin-sidebar-bg) !important;
+    color: var(--admin-sidebar-title);
+}
+
+.sidebar h3 {
+    color: var(--admin-sidebar-title);
+}
+
+.sidebar hr {
+    border-color: var(--admin-hr-color);
+}
+
+.sidebar a {
+    color: var(--admin-sidebar-text) !important;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: var(--admin-sidebar-hover) !important;
+    color: #ffffff !important;
+}
+
+/* ---------- Content Area ---------- */
+.content {
+    background-color: var(--admin-content-bg);
+}
+
+/* ---------- Cards ---------- */
+.theme-card {
+    background-color: var(--admin-card-bg) !important;
+    border-color: var(--admin-card-border) !important;
+    color: var(--admin-text-primary);
+}
+
+.theme-card .card-header {
+    background-color: var(--admin-card-bg);
+    border-bottom-color: var(--admin-card-border);
+    color: var(--admin-heading-color);
+}
+
+.theme-card .card-body {
+    background-color: var(--admin-card-bg);
+    color: var(--admin-text-primary);
+}
+
+/* ---------- Tables ---------- */
+.table {
+    color: var(--admin-text-primary);
+    --bs-table-bg: var(--admin-table-bg);
+    --bs-table-striped-bg: var(--admin-table-stripe);
+    --bs-table-hover-bg: var(--admin-table-hover);
+    --bs-table-border-color: var(--admin-table-border);
+}
+
+.table thead {
+    color: var(--admin-text-primary);
+}
+
+[data-bs-theme="dark"] .table-light {
+    --bs-table-bg: var(--admin-table-stripe);
+    --bs-table-color: var(--admin-text-primary);
+    color: var(--admin-text-primary);
+}
+
+/* ---------- Form Controls ---------- */
+.form-control,
+.form-select {
+    background-color: var(--admin-input-bg) !important;
+    border-color: var(--admin-input-border) !important;
+    color: var(--admin-input-text) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--admin-input-bg) !important;
+    color: var(--admin-input-text) !important;
+    border-color: #86b7fe !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-label {
+    color: var(--admin-text-primary);
+}
+
+/* ---------- DataTables Overrides ---------- */
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter label,
+.dataTables_wrapper .dataTables_processing {
+    color: var(--admin-text-secondary) !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    background-color: var(--admin-input-bg) !important;
+    border-color: var(--admin-input-border) !important;
+    color: var(--admin-input-text) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: var(--admin-text-primary) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: var(--admin-sidebar-hover) !important;
+    border-color: var(--admin-table-border) !important;
+    color: #fff !important;
+}
+
+[data-bs-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--admin-table-hover) !important;
+    border-color: var(--admin-table-border) !important;
+    color: #fff !important;
+}
+
+/* ---------- Alerts ---------- */
+[data-bs-theme="dark"] .alert-success {
+    background-color: #051b11;
+    border-color: #0a3622;
+    color: #75b798;
+}
+
+/* ---------- Shadows ---------- */
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem var(--admin-shadow) !important;
+}
+
+/* ---------- Theme Toggle Button ---------- */
+.theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--admin-card-border);
+    background-color: var(--admin-card-bg);
+    color: var(--admin-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px var(--admin-shadow);
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+/* ---------- Action Icons (dark mode) ---------- */
+[data-bs-theme="dark"] .edit_icon,
+[data-bs-theme="dark"] .delete_icon {
+    border-color: var(--admin-card-border) !important;
+}
+
+[data-bs-theme="dark"] .edit_icon {
+    color: #6ea8fe !important;
+}
+
+/* ---------- Buttons (dark mode refinements) ---------- */
+[data-bs-theme="dark"] .btn-secondary {
+    background-color: #495057;
+    border-color: #495057;
+}
+
+/* ---------- Modal & Dropdown (dark mode) ---------- */
+[data-bs-theme="dark"] .modal-content {
+    background-color: var(--admin-card-bg);
+    border-color: var(--admin-card-border);
+    color: var(--admin-text-primary);
+}
+
+[data-bs-theme="dark"] .dropdown-menu {
+    background-color: var(--admin-card-bg);
+    border-color: var(--admin-card-border);
+}
+
+[data-bs-theme="dark"] .dropdown-item {
+    color: var(--admin-text-primary);
+}
+
+[data-bs-theme="dark"] .dropdown-item:hover {
+    background-color: var(--admin-table-hover);
+}
+
+/* ---------- SweetAlert2 (dark mode) ---------- */
+[data-bs-theme="dark"] .swal2-popup {
+    background: var(--admin-card-bg) !important;
+    color: var(--admin-text-primary) !important;
+}
+
+[data-bs-theme="dark"] .swal2-title {
+    color: var(--admin-heading-color) !important;
+}
+
+[data-bs-theme="dark"] .swal2-html-container {
+    color: var(--admin-text-secondary) !important;
+}
+
+/* ---------- Toastr (dark mode) ---------- */
+[data-bs-theme="dark"] .toast {
+    background-color: var(--admin-card-bg) !important;
+    color: var(--admin-text-primary) !important;
+}
+
+/* ---------- Scrollbar (dark mode) ---------- */
+[data-bs-theme="dark"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--admin-body-bg);
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #495057;
+    border-radius: 4px;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: #6c757d;
+}
