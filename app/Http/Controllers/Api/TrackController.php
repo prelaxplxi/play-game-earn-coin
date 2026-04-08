@@ -87,6 +87,10 @@ class TrackController extends Controller
 
             // check if click exists in our db
             $click = Click::where('click_id', $clickId)->first();
+
+            if (empty($click)) {
+                return response()->json(['status' => 'error', 'message' => 'click_id not found.'], 422);
+            }
             if ($request->event_time != '') {
                 $eventTime = $request->input('event_time', Carbon::now()->toDateTimeString());
             } else {
@@ -95,7 +99,7 @@ class TrackController extends Controller
 
             $event = TrackedEvent::updateOrCreate(
                 [
-                    'click_id' => $clickId, 
+                    'click_id' => $clickId,
                     'event_name' => $eventName,
                     'transaction_id' => $request->input('transaction_id')
                 ],
